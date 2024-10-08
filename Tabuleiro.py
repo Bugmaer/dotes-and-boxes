@@ -1,5 +1,9 @@
 
-tabuleiro = [" ","A","B","C","D"],["1","-","-","-","-"],["2","-","-","-","-"],["3","-","-","-","-"],["4","-","-","-","-"]
+tabuleiro = [" ","A","B","C","D"],
+["1","-","-","-","-"],
+["2","-","-","-","-"],
+["3","-","-","-","-"],
+["4","-","-","-","-"]
 
 
 def imprimir_matriz(tabuleiro):
@@ -7,3 +11,5 @@ def imprimir_matriz(tabuleiro):
         print(' '.join(map(str, linha)))
 
 imprimir_matriz(tabuleiro)
+
+entrada = input("")
