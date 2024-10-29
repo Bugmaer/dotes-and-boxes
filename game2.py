@@ -217,3 +217,6 @@ while True:
     game.realizarJogada()
     if game.verificarVencedor():
         break
+
+
+
