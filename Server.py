@@ -26,12 +26,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     conn, addr = s.accept()  # aceita uma conexão
 
     with conn:  # conexão é "fechável"
-        print(f"conexão veio de: {addr}")
-
         while True:
             data = conn.recv(1024)  # recebe até 1024 bytes
             if not data:
                 break
+            print("O valor é " + data)
             conn.sendall(data)
 
 
