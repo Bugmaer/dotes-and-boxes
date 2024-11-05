@@ -1,11 +1,22 @@
 import socket
 
-HOST = "127.0.0.1"
-PORT = 1234
+def main():
+    HOST = '127.0.0.1'  # O mesmo endereço IP do servidor
+    PORT = 65432        # A mesma porta do servidor
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    print("Digite algo: ")
-    n = input()
-    data = s.recv(1024)
-    print(f"recebido: {data!r}")  # !r transforma b em str
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((HOST, PORT))
+
+    while True:
+        message = client_socket.recv(1024).decode()
+        if message == 'VEZ_DE_JOGAR':
+            jogada = input("Digite sua jogada (coluna origem, linha origem, coluna destino, linha destino): ")
+            client_socket.sendall(jogada.encode())
+        elif message == 'JOGO_TERMINADO':
+            print("O jogo terminou. Você pode sair.")
+            break
+
+    client_socket.close()
+
+if __name__ == "__main__":
+    main()
